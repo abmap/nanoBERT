@@ -26,11 +26,11 @@ nanoBERT is freely available and can be employed via the Hugging Face framwork
 ----------
 
 # use cases
-nanoBERT can be used, as is, for **residue prediction**. Or it can be **extended** for buildig nanobody classification models. 
+nanoBERT can be used, as is, for **residue prediction**. Or it can be **extended** with additional layers to build nanobody classification models. 
 
-## Nanobody residue prediction
+## Residue prediction
 
-Restoration of antibody sequences can be done using the "restore" mode as seen below.
+Residue prediction 
 
 ```{r, engine='python', count_lines}
 import ablang
@@ -58,7 +58,7 @@ array(['EVQLVESGPGLVQPGKSLRLSCVASGFTFSGYGMHWVRQAPGKGLEWIALIIYDESNKYYADSVKGRFTISR
 -----
 
 ## Extending nanoBERT
-nanoBERT vas build on the 
+nanoBERT vas build on the Hugging Face framwork and 
 
 
 

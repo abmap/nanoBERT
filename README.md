@@ -15,12 +15,12 @@
 
 -----------
 
-# Install AbLang
+# Install nanoBERT
 
-nanoBERT is freely available and can be installed with pip.
+nanoBERT is freely available and can be employed via the Hugging Face framwork 
 
 ~~~.sh
-    pip install nanobert
+    hugface install nanobert
 ~~~
 
 ----------

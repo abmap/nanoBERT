@@ -26,37 +26,29 @@ nanoBERT can be used, as is, for **residue prediction**. Or it can be **extended
 
 ## Residue prediction
 
-Residue prediction 
+Below is a minimal example of how to loade the model and predict or validate a residue on a masked position.
 
 ```{r, engine='python', count_lines}
+! pip install transformers torch
 
 import torch
 from transformers import pipeline, RobertaTokenizer
-#from transformers import   #AutoConfig, AutoModel,
 
-#from transformers import (RobertaConfig,
-  #  RobertaTokenizer, RobertaForMaskedLM)
+# Initialise the tokenizer and the unmasker
+tokenizer = RobertaTokenizer.from_pretrained("antiberta/antibody-tokenizer",return_tensors="pt")
 
+# Reduce the number of predicted residues from 20 to gain speed
+unmasker = pipeline('fill-mask', model="nanoBERT", tokenizer=tokenizer, top_k = 20)
 
+# Predict the residue probability at one or more masked positions
+seq = "QLVQSGPEVKKP<mask>ASVKVSCKASGYIFNNYGISWVRQAPGQGLEWMGWISTDNGNTNYAQKVQGRVTMTTDTSTSTAYMELRSLRYDDTAVYYCANNWGSYFEHWGQGTLVTVSS"
 
-#mdl = ""
-#device = torch.device("cuda") #cuda
-
-# Initialise the tokeniser and the unmasker
-tokenizer = RobertaTokenizer.from_pretrained(
-    "antiberta/antibody-tokenizer",
-    return_tensors="pt")
-
-unmasker = pipeline('fill-mask', model="nanoBERT3", tokenizer=tokenizer, top_k = 20)
-
-#predict the residue porbability at one or more masked positions
-seq = "ARQSSSVITRSEESRST<mask>VSERTISVDDARQSSSVITRSEESRSTVSERTISVDSTVSERTISVDDARQSSSVITRSEESRSTVSERTISVDD"
 residueProbability = unmasker(seq)
 
+# Print residue probabilities 
+for lmnt in residueProbability: print(lmnt)
 ```
-
-The output of the above is seen below.
-
+This will return the top_k most probable residues at the masked position.
 ```console
 {'score': 0.9021952748298645, 'token': 10, 'token_str': 'G', 'sequence': 'QLVQSGPEVKKPGASVKVSCKASGYIFNNYGISWVRQAPGQGLEWMGWISTDNGNTNYAQKVQGRVTMTTDTSTSTAYMELRSLRYDDTAVYYCANNWGSYFEHWGQGTLVTVSS'}
 {'score': 0.025880739092826843, 'token': 19, 'token_str': 'R', 'sequence': 'QLVQSGPEVKKPRASVKVSCKASGYIFNNYGISWVRQAPGQGLEWMGWISTDNGNTNYAQKVQGRVTMTTDTSTSTAYMELRSLRYDDTAVYYCANNWGSYFEHWGQGTLVTVSS'}
@@ -82,8 +74,7 @@ The output of the above is seen below.
 -----
 
 ## Extending nanoBERT
-nanoBERT was build on the Hugging Face framwork and 
-
+nanoBERT was built on the Hugging Face framwork and can be extended to to serve as pretrained basis for a sequence classification. Refer to the documentation on https://huggingface.co/docs/transformers/index
 
 
 ### Citation   

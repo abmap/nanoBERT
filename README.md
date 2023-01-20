@@ -17,7 +17,11 @@
 
 # Install nanoBERT
 
-nanoBERT is build using the Hugging Face framwork. nanoBERT is availibel in this reposity and can be importet using the Hugging Face framwork. 
+nanoBERT is build using the Hugging Face framwork, and can be cloned from the Hugging Face Hub.
+
+```
+git clone https://huggingface.co/abmap/nanoBERT
+```
 
 ----------
 
@@ -30,6 +34,7 @@ Below is a minimal example of how to loade the model and predict or validate a r
 
 ```{r, engine='python', count_lines}
 ! pip install transformers torch
+! git clone https://huggingface.co/abmap/nanoBERT
 
 import torch
 from transformers import pipeline, RobertaTokenizer

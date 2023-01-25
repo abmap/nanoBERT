@@ -1,14 +1,17 @@
 # nanoBERT
 ---
 
-<div align="center">    
- 
-# nanoBERT: A model for gene agnostic navigation of the nanobody space 
+# nanoBERT: A model for gene agnostic navigation of the nanobody space
 
-</div>
-
-**Motivation:** Nanobodies are a subclass of immunoglobulins, whose binding site consists of only one peptide chain, bestowing favorable biophysical properties. In 2018, first nanobody therapy was approved, paving the way for further clinical applications of this format. Further development of nanobody-based therapeutics could be streamlined by computational methods streamlining this format. One of such methods is positional prediction 
-**Results**: Here we present nanoBERT, a BERT-based nanobody specific method to predict amino acids in a specific position in a query nanobody. We demonstrate the need to develop such machine learning based method as opposed to simple positional statistics as appropriate genetic reference is not available. We benchmark nanoBERT with respect to a human-based language model, demonstrating the benefit for domain-specific language models. nanoBERT should help nanobody engineers to select naturally plausible nanobody mutations to streamline therapeutic development in this format. 
+**Motivation:** Nanobodies are a subclass of immunoglobulins, whose binding site consists of only one peptide chain,
+bestowing favorable biophysical properties. In 2018, first nanobody therapy was approved, paving the way for further
+clinical applications of this format. Further development of nanobody-based therapeutics could be streamlined by
+computational methods streamlining this format. One of such methods is positional prediction
+**Results**: Here we present nanoBERT, a BERT-based nanobody specific method to predict amino acids in a specific
+position in a query nanobody. We demonstrate the need to develop such machine learning based method as opposed to simple
+positional statistics as appropriate genetic reference is not available. We benchmark nanoBERT with respect to a
+human-based language model, demonstrating the benefit for domain-specific language models. nanoBERT should help nanobody
+engineers to select naturally plausible nanobody mutations to streamline therapeutic development in this format.
 
 
 -----------
@@ -23,14 +26,16 @@ git clone https://huggingface.co/abmap/nanoBERT
 
 ----------
 
-# use cases
-nanoBERT can be used, as is, for **residue prediction**. Or it can be **extended** with additional layers to build nanobody classification models. 
+# Use cases
+
+nanoBERT can be used, as is, for **residue prediction**. Or it can be **extended** with additional layers to build
+nanobody classification models.
 
 ## Residue prediction
 
 Below is a minimal example of how to loade the model and predict or validate a residue on a masked position.
 
-```{r, engine='python', count_lines}
+```
 ! pip install transformers torch
 ! git clone https://huggingface.co/abmap/nanoBERT
 
@@ -41,7 +46,7 @@ from transformers import pipeline, RobertaTokenizer
 tokenizer = RobertaTokenizer.from_pretrained("antibody-tokenizer", return_tensors="pt")
 
 # Reduce the number of predicted residues from 20 to gain speed
-unmasker = pipeline('fill-mask', model="nanoBERT", tokenizer=tokenizer, top_k=20)
+unmasker = pipeline('fill-mask', model="nanoBERT/nanoBERT", tokenizer=tokenizer, top_k = 20)
 
 # Predict the residue probability at one or more masked positions
 seq = "QLVQSGPEVKKP<mask>ASVKVSCKASGYIFNNYGISWVRQAPGQGLEWMGWISTDNGNTNYAQKVQGRVTMTTDTSTSTAYMELRSLRYDDTAVYYCANNWGSYFEHWGQGTLVTVSS"
@@ -52,7 +57,9 @@ residueProbability = unmasker(seq)
 for probability in residueProbability:
     print(probability))
 ```
-This will return the top_k most probable residues at the masked position.
+
+This will return the `top_k` most probable residues at the masked position.
+
 ```console
 {'score': 0.9021952748298645, 'token': 10, 'token_str': 'G', 'sequence': 'QLVQSGPEVKKPGASVKVSCKASGYIFNNYGISWVRQAPGQGLEWMGWISTDNGNTNYAQKVQGRVTMTTDTSTSTAYMELRSLRYDDTAVYYCANNWGSYFEHWGQGTLVTVSS'}
 {'score': 0.025880739092826843, 'token': 19, 'token_str': 'R', 'sequence': 'QLVQSGPEVKKPRASVKVSCKASGYIFNNYGISWVRQAPGQGLEWMGWISTDNGNTNYAQKVQGRVTMTTDTSTSTAYMELRSLRYDDTAVYYCANNWGSYFEHWGQGTLVTVSS'}
@@ -80,8 +87,11 @@ This will return the top_k most probable residues at the masked position.
 ## Extending nanoBERT
 nanoBERT was built on the Hugging Face framwork and can be extended to to serve as pretrained basis for a sequence classification. Refer to the documentation on https://huggingface.co/docs/transformers/index
 
+nanoBERT was built on the Hugging Face framework and can be extended to serve as pretrained basis for a sequence
+classification. Refer to the documentation on https://huggingface.co/docs/transformers/index
 
-### Citation   
+### Citation
+
 ```
 tba
 ```  

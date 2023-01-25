@@ -5,8 +5,6 @@
  
 # nanoBERT: A model for gene agnostic navigation of the nanobody space 
 
-[![DOI:10.1101/2022.01.20.477061](http://img.shields.io/badge/DOI-10.1101/2022.01.20.477061-B31B1B.svg)](https://doi.org/10.1101/2022.01.20.477061)
-
 </div>
 
 **Motivation:** Nanobodies are a subclass of immunoglobulins, whose binding site consists of only one peptide chain, bestowing favorable biophysical properties. In 2018, first nanobody therapy was approved, paving the way for further clinical applications of this format. Further development of nanobody-based therapeutics could be streamlined by computational methods streamlining this format. One of such methods is positional prediction 

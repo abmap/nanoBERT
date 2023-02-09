@@ -38,10 +38,10 @@ import torch
 from transformers import pipeline, RobertaTokenizer
 
 # Initialise the tokenizer and the unmasker
-tokenizer = RobertaTokenizer.from_pretrained("antiberta/antibody-tokenizer",return_tensors="pt")
+tokenizer = RobertaTokenizer.from_pretrained("antibody-tokenizer", return_tensors="pt")
 
 # Reduce the number of predicted residues from 20 to gain speed
-unmasker = pipeline('fill-mask', model="nanoBERT", tokenizer=tokenizer, top_k = 20)
+unmasker = pipeline('fill-mask', model="nanoBERT", tokenizer=tokenizer, top_k=20)
 
 # Predict the residue probability at one or more masked positions
 seq = "QLVQSGPEVKKP<mask>ASVKVSCKASGYIFNNYGISWVRQAPGQGLEWMGWISTDNGNTNYAQKVQGRVTMTTDTSTSTAYMELRSLRYDDTAVYYCANNWGSYFEHWGQGTLVTVSS"
@@ -49,7 +49,8 @@ seq = "QLVQSGPEVKKP<mask>ASVKVSCKASGYIFNNYGISWVRQAPGQGLEWMGWISTDNGNTNYAQKVQGRVTM
 residueProbability = unmasker(seq)
 
 # Print residue probabilities 
-for lmnt in residueProbability: print(lmnt)
+for probability in residueProbability:
+    print(probability))
 ```
 This will return the top_k most probable residues at the masked position.
 ```console

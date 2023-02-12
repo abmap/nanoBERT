@@ -18,7 +18,7 @@ engineers to select naturally plausible nanobody mutations to streamline therape
 
 # Install nanoBERT
 
-nanoBERT is build using the Hugging Face framwork, and can be cloned from the Hugging Face Hub.
+nanoBERT is build using the Hugging Face framework, and can be cloned from the Hugging Face Hub.
 
 ```
 git clone https://huggingface.co/abmap/nanoBERT
@@ -33,7 +33,7 @@ nanobody classification models.
 
 ## Residue prediction
 
-Below is a minimal example of how to loade the model and predict or validate a residue on a masked position.
+Below is a minimal example of how to load the model and predict or validate a residue on a masked position.
 
 ```
 ! pip install transformers torch
@@ -60,7 +60,7 @@ for probability in residueProbability:
 
 This will return the `top_k` most probable residues at the masked position.
 
-```console
+```bash
 {'score': 0.9021952748298645, 'token': 10, 'token_str': 'G', 'sequence': 'QLVQSGPEVKKPGASVKVSCKASGYIFNNYGISWVRQAPGQGLEWMGWISTDNGNTNYAQKVQGRVTMTTDTSTSTAYMELRSLRYDDTAVYYCANNWGSYFEHWGQGTLVTVSS'}
 {'score': 0.025880739092826843, 'token': 19, 'token_str': 'R', 'sequence': 'QLVQSGPEVKKPRASVKVSCKASGYIFNNYGISWVRQAPGQGLEWMGWISTDNGNTNYAQKVQGRVTMTTDTSTSTAYMELRSLRYDDTAVYYCANNWGSYFEHWGQGTLVTVSS'}
 {'score': 0.024441681802272797, 'token': 23, 'token_str': 'W', 'sequence': 'QLVQSGPEVKKPWASVKVSCKASGYIFNNYGISWVRQAPGQGLEWMGWISTDNGNTNYAQKVQGRVTMTTDTSTSTAYMELRSLRYDDTAVYYCANNWGSYFEHWGQGTLVTVSS'}
@@ -82,10 +82,19 @@ This will return the `top_k` most probable residues at the masked position.
 {'score': 0.00014110600750427693, 'token': 16, 'token_str': 'N', 'sequence': 'QLVQSGPEVKKPNASVKVSCKASGYIFNNYGISWVRQAPGQGLEWMGWISTDNGNTNYAQKVQGRVTMTTDTSTSTAYMELRSLRYDDTAVYYCANNWGSYFEHWGQGTLVTVSS'}
 {'score': 8.882807742338628e-05, 'token': 11, 'token_str': 'H', 'sequence': 'QLVQSGPEVKKPHASVKVSCKASGYIFNNYGISWVRQAPGQGLEWMGWISTDNGNTNYAQKVQGRVTMTTDTSTSTAYMELRSLRYDDTAVYYCANNWGSYFEHWGQGTLVTVSS'}
 ```
+
+### Interactive application
+
+To use interactive sample application please run:
+
+```bash
+pip install streamlit
+streamlit run app.py
+````
+
 -----
 
 ## Extending nanoBERT
-nanoBERT was built on the Hugging Face framwork and can be extended to to serve as pretrained basis for a sequence classification. Refer to the documentation on https://huggingface.co/docs/transformers/index
 
 nanoBERT was built on the Hugging Face framework and can be extended to serve as pretrained basis for a sequence
 classification. Refer to the documentation on https://huggingface.co/docs/transformers/index

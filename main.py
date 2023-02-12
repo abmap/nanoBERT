@@ -1,3 +1,7 @@
+# pip install transformers torch
+# git clone https://huggingface.co/abmap/nanoBERT
+
+import torch
 from transformers import pipeline, RobertaTokenizer
 
 # Initialise the tokenizer and the unmasker

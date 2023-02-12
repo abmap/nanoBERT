@@ -1,5 +1,5 @@
-! pip install transformers torch
-! git clone https://huggingface.co/abmap/nanoBERT
+# pip install transformers torch
+# git clone https://huggingface.co/abmap/nanoBERT
 
 import torch
 from transformers import pipeline, RobertaTokenizer

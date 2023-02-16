@@ -47,6 +47,7 @@ tokenizer = RobertaTokenizer.from_pretrained("antibody-tokenizer", return_tensor
 
 # Reduce the number of predicted residues from 20 to gain speed
 unmasker = pipeline('fill-mask', model="nanoBERT/nanoBERT", tokenizer=tokenizer, top_k = 20)
+#unmasker = pipeline('fill-mask', model="nanoBERT/nanoDist18", tokenizer=tokenizer, top_k = 20) # using the nanoDist18 variant 
 
 # Predict the residue probability at one or more masked positions
 seq = "QLVQSGPEVKKP<mask>ASVKVSCKASGYIFNNYGISWVRQAPGQGLEWMGWISTDNGNTNYAQKVQGRVTMTTDTSTSTAYMELRSLRYDDTAVYYCANNWGSYFEHWGQGTLVTVSS"
@@ -85,10 +86,8 @@ This will return the `top_k` most probable residues at the masked position.
 -----
 
 ## Extending nanoBERT
-nanoBERT was built on the Hugging Face framwork and can be extended to to serve as pretrained basis for a sequence classification. Refer to the documentation on https://huggingface.co/docs/transformers/index
-
 nanoBERT was built on the Hugging Face framework and can be extended to serve as pretrained basis for a sequence
-classification. Refer to the documentation on https://huggingface.co/docs/transformers/index
+classification. It can also be finetuned to predict residues in a specific context. Refer to the documentation on https://huggingface.co/docs/transformers/index
 
 ### Citation
 
